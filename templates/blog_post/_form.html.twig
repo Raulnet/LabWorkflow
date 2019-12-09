@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+<hr/>
+<div class="btn-group float-right">
+    {{ form_widget(form.update) }}
+    {{ form_widget(form.draft) }}
+    {{ form_widget(form.reviewed) }}
+    {{ form_widget(form.reject) }}
+    {{ form_widget(form.publish) }}
+</div>
+
+
+{{ form_end(form) }}

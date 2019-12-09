@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogPost{% endblock %}
+
+{% block body %}
+    <a class="btn btn-primary float-right" href="{{ path('blog_post_new') }}">Create new</a>
+    <h1>Blog Post</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>CurrentPlace</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for blog_post in blog_posts %}
+            <tr>
+                <td>{{ blog_post.id }}</td>
+                <td>{{ blog_post.title }}</td>
+                <td>{{ blog_post.content }}</td>
+                <td class="text-center">
+                    <span class="badge badge-pill badge-primary">
+                    {{ blog_post.currentPlace }}
+                    </span>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary btn-sm" href="{{ path('blog_post_show', {'id': blog_post.id}) }}">show</a>
+                        <a class="btn btn-success btn-sm" href="{{ path('blog_post_edit', {'id': blog_post.id}) }}">edit</a>
+                    </div>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
